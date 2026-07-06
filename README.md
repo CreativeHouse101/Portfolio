@@ -69,7 +69,7 @@ This repository is configured to deploy through GitHub Actions.
 Expected live URL:
 
 ```text
-https://CreativeWorkshpt101.github.io/Portfolio/
+https://CreativeHouse101.github.io/Portfolio/
 ```
 
 If this is the first deployment, open the GitHub repository, go to **Settings -> Pages**, and set **Source** to **GitHub Actions**. After that, every push to `main` deploys the site automatically.
