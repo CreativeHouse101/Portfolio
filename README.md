@@ -62,6 +62,18 @@ Build for production:
 pnpm build
 ```
 
+## GitHub Pages Deployment
+
+This repository is configured to deploy through GitHub Actions.
+
+Expected live URL:
+
+```text
+https://CreativeWorkshpt101.github.io/PyaeZaw_Portfolio/
+```
+
+If this is the first deployment, open the GitHub repository, go to **Settings -> Pages**, and set **Source** to **GitHub Actions**. After that, every push to `main` deploys the site automatically.
+
 ## Notes
 
 The homepage is designed as a self-contained portfolio with local assets, CSS interface mockups, anchor navigation, and no external image dependencies.

@@ -45,6 +45,9 @@ const emptyForm: FormState = {
   message: ""
 };
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const withBasePath = (path: string) => `${basePath}${path}`;
+
 const fadeIn = {
   initial: { opacity: 0, y: 18 },
   whileInView: { opacity: 1, y: 0 },
@@ -177,7 +180,7 @@ export default function Home() {
           <motion.div {...fadeIn} transition={{ ...fadeIn.transition, delay: 0.12 }} className="hero-visual">
             <div className="relative overflow-hidden border border-line bg-white dark:border-neutral-800 dark:bg-neutral-900">
               <Image
-                src="/assets/pyae-zaw-portrait.png"
+                src={withBasePath("/assets/pyae-zaw-portrait.png")}
                 alt="Pyae Zaw portrait"
                 width={900}
                 height={1200}
@@ -229,7 +232,7 @@ export default function Home() {
           <motion.div {...fadeIn} className="space-y-6">
             <div className="brand-logo-frame">
               <Image
-                src="/assets/idea-house-logo.png"
+                src={withBasePath("/assets/idea-house-logo.png")}
                 alt="IDEA House Content and Brand Studio logo"
                 width={1000}
                 height={1000}
@@ -494,7 +497,7 @@ function Header({
           >
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
-          <a className="hidden h-10 items-center gap-2 border border-ink px-4 text-sm font-semibold transition hover:bg-ink hover:text-white dark:border-neutral-700 dark:hover:bg-neutral-100 dark:hover:text-neutral-950 sm:flex" href="/PyaeZaw_Resume.pdf" download>
+          <a className="hidden h-10 items-center gap-2 border border-ink px-4 text-sm font-semibold transition hover:bg-ink hover:text-white dark:border-neutral-700 dark:hover:bg-neutral-100 dark:hover:text-neutral-950 sm:flex" href={withBasePath("/PyaeZaw_Resume.pdf")} download>
             <Download size={17} />
             Download CV
           </a>
@@ -522,7 +525,7 @@ function Header({
               {link.label}
             </a>
           ))}
-          <a className="btn-primary mt-4 w-full justify-center" href="/PyaeZaw_Resume.pdf" download>
+          <a className="btn-primary mt-4 w-full justify-center" href={withBasePath("/PyaeZaw_Resume.pdf")} download>
             Download CV
             <Download size={17} />
           </a>
