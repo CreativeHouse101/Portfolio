@@ -101,7 +101,7 @@ body {
   }
 
   .project-image-frame {
-    @apply relative aspect-square overflow-hidden border border-line bg-paper dark:border-neutral-800 dark:bg-neutral-950;
+    @apply relative aspect-square overflow-hidden border border-line bg-paper p-6 dark:border-neutral-800 dark:bg-neutral-950 sm:p-8;
   }
 
   .skill-tag {

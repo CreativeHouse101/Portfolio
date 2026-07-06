@@ -38,6 +38,16 @@ type FormState = {
   message: string;
 };
 
+type Project = {
+  number: string;
+  title: string;
+  category: string;
+  description: string;
+  skills: readonly string[];
+  image: string | null;
+  imageAlt: string | null;
+};
+
 const emptyForm: FormState = {
   name: "",
   email: "",
@@ -285,8 +295,8 @@ export default function Home() {
       <section id="projects" className="section-shell">
         <SectionIntro
           kicker="Portfolio"
-          title="IDEA House work and graphics."
-          text="A compact showcase of brand visuals, service packages, social content systems, and IDEA House client-facing creative work."
+          title="Brands, content work, and creative roles."
+          text="A focused showcase across IDEA House, Circuit Media, Speakeasy Institute, SkillBridge AI, and Digitalmarketing.mm."
         />
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -603,7 +613,7 @@ function ServiceCard({
   );
 }
 
-function ProjectCard({ index, project }: { index: number; project: (typeof projects)[number] }) {
+function ProjectCard({ index, project }: { index: number; project: Project }) {
   return (
     <motion.article
       {...fadeIn}
@@ -614,10 +624,10 @@ function ProjectCard({ index, project }: { index: number; project: (typeof proje
         <div className="project-image-frame">
           <Image
             src={withBasePath(project.image)}
-            alt={project.imageAlt}
+            alt={project.imageAlt ?? project.title}
             width={1200}
             height={1200}
-            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+            className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
           />
           <span className="absolute left-4 top-4 border border-white/70 bg-white/88 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-signal backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/82">
             {project.number}

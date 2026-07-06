@@ -82,58 +82,53 @@ export const services = [
 export const projects = [
   {
     number: "01",
-    title: "IDEA House Welcome Graphic",
-    category: "Brand Identity / Graphic Design",
+    title: "IDEA House Content & Brand Studio",
+    category: "Content & Brand Studio",
     description:
-      "A clean brand introduction visual built around the IDEA House tagline: Ideas Into Impact.",
-    skills: ["Brand identity", "Graphic design", "Visual direction"],
-    image: "/assets/idea-house-welcome.jpg",
-    imageAlt: "IDEA House welcome graphic with Ideas Into Impact tagline"
+      "My own content and brand studio, focused on brand clarity, content planning, visual direction, and client-ready creative systems.",
+    skills: ["Brand strategy", "Graphic design", "Content planning"],
+    image: "/assets/idea-house-logo.png",
+    imageAlt: "IDEA House Content and Brand Studio logo"
   },
   {
     number: "02",
-    title: "Business Momentum Campaign",
-    category: "Business Branding / Content Plan",
-    description: "A business package visual presenting brand momentum, consistency, and monthly content planning.",
-    skills: ["Business content", "Brand package", "Campaign graphic"],
-    image: "/assets/idea-house-business-momentum.jpg",
-    imageAlt: "IDEA House business momentum graphic showing monthly brand services"
+    title: "Circuit Media Tech Reviews",
+    category: "Tech Review Content / Personal Brand",
+    description:
+      "A personal tech review content brand for smartphones, community-focused reviews, and clearer buying decisions.",
+    skills: ["Tech reviews", "Smartphone content", "Community"],
+    image: "/assets/circuit-media-logo.png",
+    imageAlt: "Circuit Media smartphone tech review community logo"
   },
   {
     number: "03",
-    title: "Choose Your Pace Packages",
-    category: "Service Package / Social Media",
-    description: "A package selection graphic for Starter and Business monthly content plans.",
-    skills: ["Service design", "Package clarity", "Social content"],
-    image: "/assets/idea-house-choose-your-pace.jpg",
-    imageAlt: "IDEA House choose your pace graphic with Starter and Business packages"
+    title: "Speakeasy Institute English Teaching",
+    category: "English Teaching",
+    description:
+      "English teaching experience shaped around clear communication, structured lessons, and practical learner support.",
+    skills: ["English teaching", "Lesson content", "Communication"],
+    image: "/assets/speakeasy-institute-logo.png",
+    imageAlt: "Speakeasy Institute logo"
   },
   {
     number: "04",
-    title: "Brand Starter Kit Graphic",
-    category: "Starter Kit / Brand System",
-    description: "A starter kit visual explaining logo design, brand voice, outline, persona, and post planning.",
-    skills: ["Logo design", "Brand voice", "Starter kit"],
-    image: "/assets/idea-house-starter-kit.jpg",
-    imageAlt: "IDEA House starter kit graphic with logo design and brand voice cards"
+    title: "SkillBridge AI Video Marketing",
+    category: "AI Video Marketing",
+    description:
+      "AI-assisted video marketing work covering scripts, concepts, visuals, and short-form content production support.",
+    skills: ["AI content", "Video scripts", "Marketing"],
+    image: "/assets/skillbridge-ai-logo.png",
+    imageAlt: "SkillBridge AI logo"
   },
   {
     number: "05",
-    title: "Tech Review Content",
-    category: "Content Writing / Tech Media",
-    description: "Smartphone and gadget review content focused on helping audiences make clearer buying decisions.",
-    skills: ["Review writing", "Research", "Social content"],
-    image: null,
-    imageAlt: null
-  },
-  {
-    number: "06",
-    title: "AI Video and Marketing Content",
-    category: "AI Content / Business Marketing",
-    description: "Promotional and AI-supported content designed to improve awareness, trust, and audience engagement.",
-    skills: ["Marketing copy", "AI visuals", "CapCut"],
-    image: null,
-    imageAlt: null
+    title: "Digitalmarketing.mm Content & Marketing",
+    category: "Digital Marketing / Content Writing",
+    description:
+      "Digital marketing and content-writing work for online brand communication, promotional content, and audience engagement.",
+    skills: ["Digital marketing", "Content writing", "Campaign copy"],
+    image: "/assets/digitalmarketing-mm-logo.png",
+    imageAlt: "Digitalmarketing.mm yellow logo"
   }
 ] as const;
 
@@ -152,7 +147,7 @@ export const experience = [
   },
   {
     role: "Content Writer",
-    company: "Own Page / JOY Home / DigitalMarketing.mm",
+    company: "Digitalmarketing.mm / Personal Channels",
     period: "2024 - Present",
     label: "2+ years",
     summary: "Created social media content, captions, product review ideas, and business marketing messages.",
@@ -164,7 +159,7 @@ export const experience = [
   },
   {
     role: "English Teacher",
-    company: "SpeakEasy Institute",
+    company: "Speakeasy Institute",
     period: "March 2025 - April 2026",
     label: "13 months",
     summary: "Delivered clear English lessons and learning materials with a professional communication style.",
