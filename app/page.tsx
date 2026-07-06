@@ -123,7 +123,7 @@ export default function Home() {
     if (!validateForm()) return;
 
     setSent(true);
-    window.location.href = mailtoHref;
+    window.open(mailtoHref, "_blank", "noreferrer noopener");
   }
 
   return (
@@ -337,7 +337,7 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-              <a className="btn-inverted" href={`mailto:${profile.email}`}>
+              <a className="btn-inverted" href={`mailto:${profile.email}`} target="_blank" rel="noopener noreferrer">
                 Send an email
                 <Mail size={18} />
               </a>
@@ -375,6 +375,8 @@ export default function Home() {
                 key={method.label}
                 className="group flex items-center justify-between border border-line bg-white p-5 transition hover:border-signal hover:text-signal dark:border-neutral-800 dark:bg-neutral-900"
                 href={method.href}
+                target={method.href.startsWith("mailto:") ? "_blank" : undefined}
+                rel={method.href.startsWith("mailto:") ? "noopener noreferrer" : undefined}
               >
                 <span>
                   <span className="block text-sm uppercase tracking-[0.18em] text-muted dark:text-neutral-400">
