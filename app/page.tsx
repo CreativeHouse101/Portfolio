@@ -285,8 +285,8 @@ export default function Home() {
       <section id="projects" className="section-shell">
         <SectionIntro
           kicker="Portfolio"
-          title="Selected content systems and creative work."
-          text="A compact showcase of writing, social content, AI creation, teaching materials, and IDEA House client work."
+          title="IDEA House work and graphics."
+          text="A compact showcase of brand visuals, service packages, social content systems, and IDEA House client-facing creative work."
         />
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -610,26 +610,41 @@ function ProjectCard({ index, project }: { index: number; project: (typeof proje
       transition={{ ...fadeIn.transition, delay: index * 0.04 }}
       className="group border border-line bg-white p-4 transition hover:-translate-y-1 hover:border-signal dark:border-neutral-800 dark:bg-neutral-900"
     >
-      <div className="project-mockup" aria-hidden="true">
-        <div className="flex items-center justify-between border-b border-line pb-3 dark:border-neutral-800">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-signal">{project.number}</span>
-          <span className="h-2 w-16 bg-ink dark:bg-neutral-100" />
+      {project.image ? (
+        <div className="project-image-frame">
+          <Image
+            src={withBasePath(project.image)}
+            alt={project.imageAlt}
+            width={1200}
+            height={1200}
+            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+          />
+          <span className="absolute left-4 top-4 border border-white/70 bg-white/88 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-signal backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/82">
+            {project.number}
+          </span>
         </div>
-        <div className="mt-5 grid gap-2">
-          <span className="h-3 w-10/12 bg-ink/85 dark:bg-neutral-100/85" />
-          <span className="h-3 w-7/12 bg-muted/45 dark:bg-neutral-500" />
-          <span className="h-3 w-9/12 bg-muted/25 dark:bg-neutral-700" />
+      ) : (
+        <div className="project-mockup" aria-hidden="true">
+          <div className="flex items-center justify-between border-b border-line pb-3 dark:border-neutral-800">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-signal">{project.number}</span>
+            <span className="h-2 w-16 bg-ink dark:bg-neutral-100" />
+          </div>
+          <div className="mt-5 grid gap-2">
+            <span className="h-3 w-10/12 bg-ink/85 dark:bg-neutral-100/85" />
+            <span className="h-3 w-7/12 bg-muted/45 dark:bg-neutral-500" />
+            <span className="h-3 w-9/12 bg-muted/25 dark:bg-neutral-700" />
+          </div>
+          <div className="mt-8 flex items-end gap-2">
+            {[46, 72, 58, 86, 64].map((height, barIndex) => (
+              <span
+                key={`${project.title}-${barIndex}`}
+                className={cn("w-full bg-signal", barIndex % 2 && "bg-olive dark:bg-neutral-500")}
+                style={{ height }}
+              />
+            ))}
+          </div>
         </div>
-        <div className="mt-8 flex items-end gap-2">
-          {[46, 72, 58, 86, 64].map((height, barIndex) => (
-            <span
-              key={`${project.title}-${barIndex}`}
-              className={cn("w-full bg-signal", barIndex % 2 && "bg-olive dark:bg-neutral-500")}
-              style={{ height }}
-            />
-          ))}
-        </div>
-      </div>
+      )}
 
       <div className="pt-5">
         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-signal">{project.category}</p>

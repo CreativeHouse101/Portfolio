@@ -82,46 +82,58 @@ export const services = [
 export const projects = [
   {
     number: "01",
-    title: "IDEA House Launch System",
-    category: "Brand / Content Studio",
+    title: "IDEA House Welcome Graphic",
+    category: "Brand Identity / Graphic Design",
     description:
-      "A minimal content and client workflow for a newly founded studio that accepted 3 clients within its first 3 months.",
-    skills: ["Brand strategy", "Content planning", "Client communication"]
+      "A clean brand introduction visual built around the IDEA House tagline: Ideas Into Impact.",
+    skills: ["Brand identity", "Graphic design", "Visual direction"],
+    image: "/assets/idea-house-welcome.jpg",
+    imageAlt: "IDEA House welcome graphic with Ideas Into Impact tagline"
   },
   {
     number: "02",
-    title: "Tech Review Content",
-    category: "Content Writing / Tech Media",
-    description: "Smartphone and gadget review content focused on helping audiences make clearer buying decisions.",
-    skills: ["Review writing", "Research", "Social content"]
+    title: "Business Momentum Campaign",
+    category: "Business Branding / Content Plan",
+    description: "A business package visual presenting brand momentum, consistency, and monthly content planning.",
+    skills: ["Business content", "Brand package", "Campaign graphic"],
+    image: "/assets/idea-house-business-momentum.jpg",
+    imageAlt: "IDEA House business momentum graphic showing monthly brand services"
   },
   {
     number: "03",
-    title: "Social Media Content Campaign",
-    category: "Social Media Management",
-    description: "Strategic captions, post ideas, visual directions, and message systems for online business pages.",
-    skills: ["Captions", "Planning", "Community content"]
+    title: "Choose Your Pace Packages",
+    category: "Service Package / Social Media",
+    description: "A package selection graphic for Starter and Business monthly content plans.",
+    skills: ["Service design", "Package clarity", "Social content"],
+    image: "/assets/idea-house-choose-your-pace.jpg",
+    imageAlt: "IDEA House choose your pace graphic with Starter and Business packages"
   },
   {
     number: "04",
-    title: "AI Video Content",
-    category: "AI Content Creation",
-    description: "AI-supported video concepts, scriptwriting, editing support, and creative production workflows.",
-    skills: ["ChatGPT", "CapCut", "AI visuals"]
+    title: "Brand Starter Kit Graphic",
+    category: "Starter Kit / Brand System",
+    description: "A starter kit visual explaining logo design, brand voice, outline, persona, and post planning.",
+    skills: ["Logo design", "Brand voice", "Starter kit"],
+    image: "/assets/idea-house-starter-kit.jpg",
+    imageAlt: "IDEA House starter kit graphic with logo design and brand voice cards"
   },
   {
     number: "05",
-    title: "English Learning Content",
-    category: "Education",
-    description: "Learning materials and practical English content shaped by C1-level teaching experience.",
-    skills: ["Teaching", "Lesson content", "Communication"]
+    title: "Tech Review Content",
+    category: "Content Writing / Tech Media",
+    description: "Smartphone and gadget review content focused on helping audiences make clearer buying decisions.",
+    skills: ["Review writing", "Research", "Social content"],
+    image: null,
+    imageAlt: null
   },
   {
     number: "06",
-    title: "Digital Marketing Content",
-    category: "Business Marketing",
-    description: "Promotional content designed to improve awareness, trust, and audience engagement for brands.",
-    skills: ["Marketing copy", "Brand message", "Canva"]
+    title: "AI Video and Marketing Content",
+    category: "AI Content / Business Marketing",
+    description: "Promotional and AI-supported content designed to improve awareness, trust, and audience engagement.",
+    skills: ["Marketing copy", "AI visuals", "CapCut"],
+    image: null,
+    imageAlt: null
   }
 ] as const;
 

@@ -100,6 +100,10 @@ body {
     @apply aspect-[1.2/1] border border-line bg-paper p-4 dark:border-neutral-800 dark:bg-neutral-950;
   }
 
+  .project-image-frame {
+    @apply relative aspect-square overflow-hidden border border-line bg-paper dark:border-neutral-800 dark:bg-neutral-950;
+  }
+
   .skill-tag {
     @apply inline-flex border border-line bg-paper px-3 py-1.5 text-sm font-medium text-muted dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-300;
   }
