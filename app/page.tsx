@@ -1,9 +1,9 @@
 "use client";
 
-import { type FormEvent, useMemo, useState } from "react";
+import { type FormEvent, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Mail, MapPin, Menu, Phone, Send, X } from "lucide-react";
+import { ArrowRight, Check, Mail, MapPin, Menu, Moon, Phone, Send, Sun, X } from "lucide-react";
 import {
   brand,
   contactDetails,
@@ -26,6 +26,8 @@ type FormState = {
   subject: string;
   message: string;
 };
+
+type Theme = "light" | "dark";
 
 const emptyForm: FormState = {
   name: "",
@@ -55,6 +57,18 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [formState, setFormState] = useState<FormState>(emptyForm);
   const [submitted, setSubmitted] = useState(false);
+  const [theme, setTheme] = useState<Theme>("light");
+
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem("idea-house-theme");
+    const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    setTheme(savedTheme === "dark" || savedTheme === "light" ? savedTheme : preferredTheme);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    window.localStorage.setItem("idea-house-theme", theme);
+  }, [theme]);
 
   const mailtoHref = useMemo(() => {
     const body = [
@@ -82,7 +96,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-paper text-ink">
-      <SiteHeader menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <SiteHeader menuOpen={menuOpen} setMenuOpen={setMenuOpen} setTheme={setTheme} theme={theme} />
 
       <HeroSection />
       <AboutSection />
@@ -104,16 +118,20 @@ export default function Home() {
 
 function SiteHeader({
   menuOpen,
-  setMenuOpen
+  setMenuOpen,
+  setTheme,
+  theme
 }: {
   menuOpen: boolean;
   setMenuOpen: (open: boolean) => void;
+  setTheme: (theme: Theme) => void;
+  theme: Theme;
 }) {
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-line/80 bg-paper/92 backdrop-blur-xl">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
         <a className="flex items-center gap-3" href="#home" onClick={() => setMenuOpen(false)}>
-          <span className="grid size-10 place-items-center rounded-[8px] border border-line bg-white p-1.5 shadow-sm">
+          <span className="grid size-10 place-items-center rounded-[8px] border border-line bg-surface p-1.5 shadow-sm">
             <Image src={withBasePath(brand.logo)} alt={`${brand.name} logo`} width={64} height={64} className="h-full w-full object-contain" />
           </span>
           <span className="leading-tight">
@@ -131,6 +149,7 @@ function SiteHeader({
         </div>
 
         <div className="flex items-center gap-2">
+          <ThemeSwitch setTheme={setTheme} theme={theme} />
           <a className="hidden h-10 items-center gap-2 rounded-[8px] border border-signal bg-signal px-4 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#0d50d6] sm:flex" href="#plans">
             View Plans
             <ArrowRight size={16} />
@@ -149,6 +168,9 @@ function SiteHeader({
 
       <div className={cn("mobile-menu lg:hidden", menuOpen ? "max-h-[420px] border-t border-line" : "max-h-0")}>
         <div className="space-y-2 px-4 py-4">
+          <div className="pb-2">
+            <ThemeSwitch mobile setTheme={setTheme} theme={theme} />
+          </div>
           {navLinks.map((link) => (
             <a key={link.href} className="mobile-link rounded-[8px]" href={link.href} onClick={() => setMenuOpen(false)}>
               {link.label}
@@ -164,18 +186,51 @@ function SiteHeader({
   );
 }
 
+function ThemeSwitch({
+  mobile = false,
+  setTheme,
+  theme
+}: {
+  mobile?: boolean;
+  setTheme: (theme: Theme) => void;
+  theme: Theme;
+}) {
+  return (
+    <div className={cn("grid grid-cols-2 rounded-[8px] border border-line bg-surface p-1 shadow-sm", mobile ? "w-full" : "hidden sm:grid")}>
+      <button
+        aria-pressed={theme === "light"}
+        className={cn(
+          "inline-flex h-8 items-center justify-center gap-1.5 rounded-[6px] px-3 text-xs font-semibold transition",
+          theme === "light" ? "bg-paper text-signal" : "text-muted hover:text-signal"
+        )}
+        onClick={() => setTheme("light")}
+        title="Light mode"
+        type="button"
+      >
+        <Sun size={15} />
+        <span>Light</span>
+      </button>
+      <button
+        aria-pressed={theme === "dark"}
+        className={cn(
+          "inline-flex h-8 items-center justify-center gap-1.5 rounded-[6px] px-3 text-xs font-semibold transition",
+          theme === "dark" ? "bg-paper text-signal" : "text-muted hover:text-signal"
+        )}
+        onClick={() => setTheme("dark")}
+        title="Dark mode"
+        type="button"
+      >
+        <Moon size={15} />
+        <span>Dark</span>
+      </button>
+    </div>
+  );
+}
+
 function HeroSection() {
   return (
-    <section id="home" className="relative overflow-hidden border-b border-line bg-[#fbfaf7] pt-20">
-      <Image
-        priority
-        src={withBasePath("/assets/idea-house-business-momentum.jpg")}
-        alt=""
-        aria-hidden="true"
-        width={1200}
-        height={1200}
-        className="pointer-events-none absolute right-[-18rem] top-24 hidden h-[76%] w-[76%] max-w-[980px] object-contain opacity-80 lg:block xl:right-[-9rem]"
-      />
+    <section id="home" className="relative overflow-hidden border-b border-line bg-paper pt-20">
+      <HeroGrowthVisual />
       <div className="pointer-events-none absolute bottom-12 right-10 grid grid-cols-6 gap-2 opacity-45" aria-hidden="true">
         {Array.from({ length: 36 }).map((_, index) => (
           <span key={index} className="size-1 rounded-full bg-signal/55" />
@@ -184,7 +239,7 @@ function HeroSection() {
 
       <div className="section-shell relative z-10 grid min-h-[78vh] items-center py-20 lg:py-24">
         <motion.div {...fadeIn} className="max-w-4xl">
-          <div className="inline-flex rounded-full border border-signal/25 bg-white/72 px-4 py-2 text-xs font-semibold uppercase tracking-normal text-signal shadow-sm backdrop-blur">
+          <div className="inline-flex rounded-full border border-signal/25 bg-surface/72 px-4 py-2 text-xs font-semibold uppercase tracking-normal text-signal shadow-sm backdrop-blur">
             IDEA HOUSE - CONTENT & BRAND STUDIO
           </div>
 
@@ -212,7 +267,7 @@ function HeroSection() {
 
           <div className="mt-12 grid max-w-3xl gap-3 sm:grid-cols-3">
             {studioStats.map((stat) => (
-              <div key={stat.label} className="rounded-[8px] border border-line bg-white/84 p-4 shadow-sm backdrop-blur">
+              <div key={stat.label} className="rounded-[8px] border border-line bg-surface/84 p-4 shadow-sm backdrop-blur">
                 <p className="text-3xl font-semibold text-signal">{stat.value}</p>
                 <p className="mt-3 text-sm font-semibold uppercase tracking-normal">{stat.label}</p>
                 <p className="mt-2 text-sm leading-6 text-muted">{stat.detail}</p>
@@ -227,7 +282,7 @@ function HeroSection() {
           className="mt-14 grid gap-3 sm:grid-cols-3 lg:absolute lg:bottom-10 lg:right-8 lg:mt-0 lg:w-[420px]"
         >
           {serviceFlow.map((item) => (
-            <div key={item.label} className="rounded-[8px] border border-line bg-white/88 p-4 shadow-sm backdrop-blur">
+            <div key={item.label} className="rounded-[8px] border border-line bg-surface/88 p-4 shadow-sm backdrop-blur">
               <item.icon className="text-signal" size={20} />
               <p className="mt-4 text-sm font-semibold uppercase tracking-normal">{item.label}</p>
             </div>
@@ -235,6 +290,28 @@ function HeroSection() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function HeroGrowthVisual() {
+  return (
+    <div className="pointer-events-none absolute right-0 top-24 hidden h-[70%] w-[54%] lg:block" aria-hidden="true">
+      <svg className="h-full w-full overflow-visible" viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M44 408C138 400 184 424 266 362C344 303 390 252 476 234C552 218 612 174 680 92" stroke="rgb(var(--color-line))" strokeWidth="2" />
+        <path d="M46 422C142 414 188 438 270 376C348 317 394 266 480 248C556 232 616 188 684 106" stroke="rgb(var(--color-signal))" strokeWidth="5" strokeLinecap="round" />
+        {[62, 154, 250, 342, 438, 536, 640].map((cx, index) => (
+          <circle key={cx} cx={cx} cy={[420, 400, 372, 312, 254, 214, 154][index]} r={8 + index * 1.2} fill="rgb(var(--color-signal))" />
+        ))}
+        <rect x="430" y="62" width="162" height="108" rx="8" fill="rgb(var(--color-surface) / 0.86)" stroke="rgb(var(--color-line))" />
+        <path d="M458 130L486 111L515 121L552 84" stroke="rgb(var(--color-signal))" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+        <rect x="486" y="298" width="184" height="118" rx="8" fill="rgb(var(--color-surface) / 0.86)" stroke="rgb(var(--color-line))" />
+        {[0, 1, 2, 3, 4].map((bar) => (
+          <rect key={bar} x={514 + bar * 26} y={366 - bar * 12} width="14" height={26 + bar * 12} rx="3" fill="rgb(var(--color-signal) / 0.22)" />
+        ))}
+        <circle cx="360" cy="166" r="54" stroke="rgb(var(--color-line))" strokeWidth="14" />
+        <path d="M360 112A54 54 0 1 1 313 193" stroke="rgb(var(--color-signal))" strokeWidth="14" strokeLinecap="round" />
+      </svg>
+    </div>
   );
 }
 
@@ -249,10 +326,10 @@ function AboutSection() {
 
       <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
         <motion.div {...fadeIn} className="space-y-5">
-          <div className="rounded-[8px] border border-line bg-white p-6 shadow-sm">
+          <div className="rounded-[8px] border border-line bg-surface p-6 shadow-sm">
             <Image src={withBasePath(brand.logo)} alt={`${brand.name} logo`} width={1000} height={1000} className="h-auto w-full object-contain" />
           </div>
-          <div className="rounded-[8px] border border-signal/20 bg-white p-5 shadow-sm">
+          <div className="rounded-[8px] border border-signal/20 bg-surface p-5 shadow-sm">
             <p className="section-kicker">Studio Line</p>
             <p className="mt-3 text-2xl font-semibold">{brand.serviceLine}</p>
           </div>
@@ -264,7 +341,7 @@ function AboutSection() {
               key={pillar.title}
               {...fadeIn}
               transition={{ ...fadeIn.transition, delay: index * 0.06 }}
-              className="rounded-[8px] border border-line bg-white p-5 shadow-sm"
+              className="rounded-[8px] border border-line bg-surface p-5 shadow-sm"
             >
               <pillar.icon className="text-signal" size={24} />
               <h3 className="mt-8 text-2xl font-semibold tracking-normal">{pillar.title}</h3>
@@ -279,7 +356,7 @@ function AboutSection() {
 
 function ServicesSection() {
   return (
-    <section id="services" className="border-y border-line bg-white">
+    <section id="services" className="border-y border-line bg-surface">
       <div className="section-shell">
         <SectionIntro
           kicker="Services"
@@ -293,9 +370,9 @@ function ServicesSection() {
               key={service.title}
               {...fadeIn}
               transition={{ ...fadeIn.transition, delay: index * 0.04 }}
-              className="group rounded-[8px] border border-line bg-paper p-5 shadow-sm transition hover:-translate-y-1 hover:border-signal hover:bg-white"
+              className="group rounded-[8px] border border-line bg-paper p-5 shadow-sm transition hover:-translate-y-1 hover:border-signal hover:bg-surface"
             >
-              <div className="grid size-12 place-items-center rounded-[8px] border border-signal/20 bg-white text-signal">
+              <div className="grid size-12 place-items-center rounded-[8px] border border-signal/20 bg-surface text-signal">
                 <service.icon size={23} />
               </div>
               <h3 className="mt-8 text-2xl font-semibold leading-tight">{service.title}</h3>
@@ -336,7 +413,7 @@ function PlanCard({ index, plan }: { index: number; plan: (typeof plans)[number]
       {...fadeIn}
       transition={{ ...fadeIn.transition, delay: index * 0.08 }}
       className={cn(
-        "relative flex flex-col rounded-[8px] border bg-white p-5 shadow-sm sm:p-7",
+        "relative flex flex-col rounded-[8px] border bg-surface p-5 shadow-sm sm:p-7",
         plan.featured ? "border-signal shadow-[0_24px_80px_rgba(20,99,255,0.16)]" : "border-line"
       )}
     >
@@ -376,7 +453,7 @@ function PlanCard({ index, plan }: { index: number; plan: (typeof plans)[number]
 
 function PlanDescriptionsSection() {
   return (
-    <section className="border-y border-line bg-white">
+    <section className="border-y border-line bg-surface">
       <div className="section-shell">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
           <motion.div {...fadeIn}>
@@ -429,7 +506,7 @@ function PortfolioSection() {
             key={work.title}
             {...fadeIn}
             transition={{ ...fadeIn.transition, delay: index * 0.04 }}
-            className="rounded-[8px] border border-line bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:border-signal"
+            className="rounded-[8px] border border-line bg-surface p-4 shadow-sm transition hover:-translate-y-1 hover:border-signal"
           >
             <div className="relative aspect-square overflow-hidden rounded-[8px] border border-line bg-paper p-4">
               {work.image ? (
@@ -475,7 +552,7 @@ function ContactSection({
   updateField: (field: keyof FormState, value: string) => void;
 }) {
   return (
-    <section id="contact" className="border-t border-line bg-white">
+    <section id="contact" className="border-t border-line bg-surface">
       <div className="section-shell">
         <SectionIntro
           kicker="Contact"
@@ -506,7 +583,7 @@ function ContactSection({
               <p className="section-kicker">Studio Focus</p>
               <div className="mt-5 grid gap-3 sm:grid-cols-3">
                 {visualMetrics.map((metric) => (
-                  <div key={metric.label} className="rounded-[8px] border border-line bg-white p-4">
+                  <div key={metric.label} className="rounded-[8px] border border-line bg-surface p-4">
                     <p className="text-2xl font-semibold text-signal">{metric.value}</p>
                     <p className="mt-2 text-xs font-semibold uppercase tracking-normal text-muted">{metric.label}</p>
                   </div>
@@ -541,7 +618,7 @@ function ContactDetail({ detail }: { detail: (typeof contactDetails)[number] }) 
   const Icon = detail.label === "Email" ? Mail : detail.label === "Phone" ? Phone : MapPin;
 
   return (
-    <a className="group flex items-center justify-between gap-4 rounded-[8px] border border-line bg-white p-5 shadow-sm transition hover:border-signal" href={detail.href}>
+    <a className="group flex items-center justify-between gap-4 rounded-[8px] border border-line bg-surface p-5 shadow-sm transition hover:border-signal" href={detail.href}>
       <span>
         <span className="block text-sm font-semibold uppercase tracking-normal text-muted">{detail.label}</span>
         <span className="mt-2 block text-lg font-semibold">{detail.value}</span>
@@ -605,7 +682,7 @@ function SiteFooter() {
         </div>
         <div className="flex flex-wrap gap-2">
           {navLinks.map((link) => (
-            <a key={link.href} className="rounded-[8px] border border-line bg-white px-4 py-2 text-sm font-semibold transition hover:border-signal hover:text-signal" href={link.href}>
+            <a key={link.href} className="rounded-[8px] border border-line bg-surface px-4 py-2 text-sm font-semibold transition hover:border-signal hover:text-signal" href={link.href}>
               {link.label}
             </a>
           ))}

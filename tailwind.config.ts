@@ -12,13 +12,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#FBFAF7",
-        ink: "#0B1426",
-        signal: "#1463FF",
+        paper: "rgb(var(--color-paper) / <alpha-value>)",
+        surface: "rgb(var(--color-surface) / <alpha-value>)",
+        soft: "rgb(var(--color-soft) / <alpha-value>)",
+        ink: "rgb(var(--color-ink) / <alpha-value>)",
+        signal: "rgb(var(--color-signal) / <alpha-value>)",
         peach: "#EAC8B0",
         olive: "#66735B",
-        muted: "#5F6875",
-        line: "#DDE3EC"
+        muted: "rgb(var(--color-muted) / <alpha-value>)",
+        line: "rgb(var(--color-line) / <alpha-value>)"
       },
       fontFamily: {
         sans: ["var(--font-sans)", "Arial", "Helvetica", "sans-serif"],

@@ -4,10 +4,24 @@
 
 :root {
   color-scheme: light;
+  --color-paper: 251 250 247;
+  --color-surface: 255 255 255;
+  --color-soft: 246 249 255;
+  --color-ink: 11 20 38;
+  --color-signal: 20 99 255;
+  --color-muted: 95 104 117;
+  --color-line: 221 227 236;
 }
 
 :root.dark {
   color-scheme: dark;
+  --color-paper: 7 15 28;
+  --color-surface: 13 26 46;
+  --color-soft: 10 20 36;
+  --color-ink: 246 249 255;
+  --color-signal: 91 161 255;
+  --color-muted: 180 194 211;
+  --color-line: 43 61 86;
 }
 
 * {
@@ -21,14 +35,14 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background: #fbfaf7;
-  color: #0b1426;
+  background: rgb(var(--color-paper));
+  color: rgb(var(--color-ink));
   font-family: Arial, Helvetica, sans-serif;
   text-rendering: geometricPrecision;
 }
 
 ::selection {
-  background: #1463ff;
+  background: rgb(var(--color-signal));
   color: #ffffff;
 }
 
@@ -50,23 +64,23 @@ body {
   }
 
   .btn-secondary {
-    @apply inline-flex h-12 items-center gap-2 rounded-[8px] border border-ink bg-white px-5 text-sm font-semibold text-ink shadow-sm transition hover:-translate-y-0.5 hover:bg-ink hover:text-white focus:outline-none focus:ring-2 focus:ring-ink focus:ring-offset-2 focus:ring-offset-paper;
+    @apply inline-flex h-12 items-center gap-2 rounded-[8px] border border-ink bg-surface px-5 text-sm font-semibold text-ink shadow-sm transition hover:-translate-y-0.5 hover:bg-ink hover:text-white focus:outline-none focus:ring-2 focus:ring-ink focus:ring-offset-2 focus:ring-offset-paper;
   }
 
   .btn-inverted {
-    @apply inline-flex h-12 items-center justify-center gap-2 rounded-[8px] border border-white bg-white px-5 text-sm font-semibold text-signal transition hover:-translate-y-0.5 hover:bg-transparent hover:text-white;
+    @apply inline-flex h-12 items-center justify-center gap-2 rounded-[8px] border border-white bg-surface px-5 text-sm font-semibold text-signal transition hover:-translate-y-0.5 hover:bg-transparent hover:text-white;
   }
 
   .btn-ghost-light {
-    @apply inline-flex h-12 items-center justify-center gap-2 rounded-[8px] border border-white/45 bg-transparent px-5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white hover:text-signal;
+    @apply inline-flex h-12 items-center justify-center gap-2 rounded-[8px] border border-white/45 bg-transparent px-5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-surface hover:text-signal;
   }
 
   .icon-button {
-    @apply grid size-10 place-items-center border border-line bg-white text-ink shadow-sm transition hover:border-signal hover:text-signal;
+    @apply grid size-10 place-items-center border border-line bg-surface text-ink shadow-sm transition hover:border-signal hover:text-signal;
   }
 
   .nav-link {
-    @apply rounded-[8px] px-3 py-2 text-sm font-medium text-muted transition hover:bg-white hover:text-signal;
+    @apply rounded-[8px] px-3 py-2 text-sm font-medium text-muted transition hover:bg-surface hover:text-signal;
   }
 
   .nav-link-active {
@@ -75,15 +89,15 @@ body {
 
   .mobile-menu {
     @apply overflow-hidden transition-[max-height] duration-300;
-    background: rgb(246 245 241 / 0.96);
+    background: rgb(var(--color-paper) / 0.96);
   }
 
   .dark .mobile-menu {
-    background: rgb(10 10 10 / 0.96);
+    background: rgb(var(--color-paper) / 0.96);
   }
 
   .mobile-link {
-    @apply block border border-transparent px-3 py-3 text-base font-semibold text-muted transition hover:border-line hover:bg-white hover:text-signal;
+    @apply block border border-transparent px-3 py-3 text-base font-semibold text-muted transition hover:border-line hover:bg-surface hover:text-signal;
   }
 
   .mobile-link-active {
@@ -95,11 +109,11 @@ body {
   }
 
   .brand-logo-frame {
-    @apply border border-line bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900;
+    @apply border border-line bg-surface p-5;
   }
 
   .project-mockup {
-    @apply aspect-[1.2/1] border border-line bg-paper p-4 dark:border-neutral-800 dark:bg-neutral-950;
+    @apply aspect-[1.2/1] border border-line bg-paper p-4;
   }
 
   .project-image-frame {
@@ -111,7 +125,7 @@ body {
   }
 
   .contact-form {
-    @apply space-y-4 border border-line bg-white p-5 sm:p-6;
+    @apply space-y-4 border border-line bg-surface p-5 sm:p-6;
   }
 }
 
