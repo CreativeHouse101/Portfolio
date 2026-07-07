@@ -12,16 +12,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#F6F5F1",
-        ink: "#111315",
+        paper: "#FBFAF7",
+        ink: "#0B1426",
         signal: "#1463FF",
         peach: "#EAC8B0",
         olive: "#66735B",
-        muted: "#686A6D",
-        line: "#D9D6CE"
+        muted: "#5F6875",
+        line: "#DDE3EC"
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "Arial", "Helvetica", "sans-serif"]
+        sans: ["var(--font-sans)", "Arial", "Helvetica", "sans-serif"],
+        serif: ["Georgia", "Times New Roman", "serif"]
       },
       boxShadow: {
         "hard-sm": "3px 3px 0 #0F0F0D",

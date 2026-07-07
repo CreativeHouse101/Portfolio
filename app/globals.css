@@ -21,6 +21,8 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+  background: #fbfaf7;
+  color: #0b1426;
   font-family: Arial, Helvetica, sans-serif;
   text-rendering: geometricPrecision;
 }
@@ -36,35 +38,35 @@ body {
   }
 
   .section-kicker {
-    @apply text-sm font-semibold uppercase tracking-[0.22em] text-signal;
+    @apply text-sm font-semibold uppercase tracking-normal text-signal;
   }
 
   .label-pill {
-    @apply inline-flex h-9 items-center border px-3 text-xs font-semibold uppercase tracking-[0.16em];
+    @apply inline-flex h-9 items-center border px-3 text-xs font-semibold uppercase tracking-normal;
   }
 
   .btn-primary {
-    @apply inline-flex h-12 items-center gap-2 border border-signal bg-signal px-5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#0d50d6] focus:outline-none focus:ring-2 focus:ring-signal focus:ring-offset-2 focus:ring-offset-paper dark:focus:ring-offset-neutral-950;
+    @apply inline-flex h-12 items-center gap-2 rounded-[8px] border border-signal bg-signal px-5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#0d50d6] focus:outline-none focus:ring-2 focus:ring-signal focus:ring-offset-2 focus:ring-offset-paper;
   }
 
   .btn-secondary {
-    @apply inline-flex h-12 items-center gap-2 border border-ink bg-transparent px-5 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:bg-ink hover:text-white focus:outline-none focus:ring-2 focus:ring-ink focus:ring-offset-2 focus:ring-offset-paper dark:border-neutral-700 dark:text-neutral-50 dark:hover:bg-neutral-100 dark:hover:text-neutral-950 dark:focus:ring-offset-neutral-950;
+    @apply inline-flex h-12 items-center gap-2 rounded-[8px] border border-ink bg-white px-5 text-sm font-semibold text-ink shadow-sm transition hover:-translate-y-0.5 hover:bg-ink hover:text-white focus:outline-none focus:ring-2 focus:ring-ink focus:ring-offset-2 focus:ring-offset-paper;
   }
 
   .btn-inverted {
-    @apply inline-flex h-12 items-center justify-center gap-2 border border-white bg-white px-5 text-sm font-semibold text-signal transition hover:-translate-y-0.5 hover:bg-transparent hover:text-white;
+    @apply inline-flex h-12 items-center justify-center gap-2 rounded-[8px] border border-white bg-white px-5 text-sm font-semibold text-signal transition hover:-translate-y-0.5 hover:bg-transparent hover:text-white;
   }
 
   .btn-ghost-light {
-    @apply inline-flex h-12 items-center justify-center gap-2 border border-white/45 bg-transparent px-5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white hover:text-signal;
+    @apply inline-flex h-12 items-center justify-center gap-2 rounded-[8px] border border-white/45 bg-transparent px-5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white hover:text-signal;
   }
 
   .icon-button {
-    @apply grid size-10 place-items-center border border-line bg-white text-ink transition hover:border-signal hover:text-signal dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-50;
+    @apply grid size-10 place-items-center border border-line bg-white text-ink shadow-sm transition hover:border-signal hover:text-signal;
   }
 
   .nav-link {
-    @apply px-3 py-2 text-sm font-medium text-muted transition hover:text-signal dark:text-neutral-400 dark:hover:text-signal;
+    @apply rounded-[8px] px-3 py-2 text-sm font-medium text-muted transition hover:bg-white hover:text-signal;
   }
 
   .nav-link-active {
@@ -81,11 +83,11 @@ body {
   }
 
   .mobile-link {
-    @apply block border border-transparent px-3 py-3 text-base font-semibold text-muted transition hover:border-line hover:text-signal dark:text-neutral-300 dark:hover:border-neutral-800;
+    @apply block border border-transparent px-3 py-3 text-base font-semibold text-muted transition hover:border-line hover:bg-white hover:text-signal;
   }
 
   .mobile-link-active {
-    @apply border-line text-signal dark:border-neutral-800;
+    @apply border-line text-signal;
   }
 
   .hero-visual {
@@ -101,15 +103,15 @@ body {
   }
 
   .project-image-frame {
-    @apply relative aspect-square overflow-hidden border border-line bg-paper p-6 dark:border-neutral-800 dark:bg-neutral-950 sm:p-8;
+    @apply relative aspect-square overflow-hidden rounded-[8px] border border-line bg-paper p-6 sm:p-8;
   }
 
   .skill-tag {
-    @apply inline-flex border border-line bg-paper px-3 py-1.5 text-sm font-medium text-muted dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-300;
+    @apply inline-flex border border-line bg-paper px-3 py-1.5 text-sm font-medium text-muted;
   }
 
   .contact-form {
-    @apply space-y-4 border border-line bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900 sm:p-6;
+    @apply space-y-4 border border-line bg-white p-5 sm:p-6;
   }
 }
 

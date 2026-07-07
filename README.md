@@ -1,79 +1,29 @@
-# Pyae Zaw Portfolio
+# IDEA HOUSE Website
 
-Minimal responsive personal portfolio and resume website for Pyae Zaw, founder of IDEA House.
+Official responsive brand website for IDEA HOUSE, a Content & Brand Studio built around:
 
-## Stack
+- Text
+- Graphic
+- Planning
 
-- Next.js 15 with App Router
-- TypeScript
-- Tailwind CSS
-- shadcn/ui-style reusable primitives
-- Lucide React icons
-- Framer Motion
-- Local image assets
-- Contact form validation
-- Dark/light mode toggle
-
-## Main Sections
+## Sections
 
 - Home
-- About
-- IDEA House
-- Projects
-- Experience
-- Skills
+- About IDEA HOUSE
+- Services
+- Plans & Pricing
+- Portfolio / Selected Work
 - Contact
 
-## Brand Notes
+## Deployment
 
-- IDEA House is presented as a newly founded content and brand studio.
-- The site highlights 3 clients accepted over the first 3 months.
-- The profile focuses on content writing, AI content creation, digital marketing, video work, and English teaching.
-
-## Assets
-
-- Portrait: `/public/assets/pyae-zaw-portrait.png`
-- Logo: `/public/assets/idea-house-logo.png`
-- CV download: `/public/PyaeZaw_Resume.pdf`
-
-## Getting Started
-
-Install dependencies:
+The site is a static Next.js export configured for GitHub Pages.
 
 ```bash
-pnpm install
+npm install
+NEXT_PUBLIC_BASE_PATH=/Portfolio npm run build
 ```
 
-Run the development server:
+The live GitHub Pages URL is:
 
-```bash
-pnpm dev
-```
-
-Open:
-
-```text
-http://localhost:3000
-```
-
-Build for production:
-
-```bash
-pnpm build
-```
-
-## GitHub Pages Deployment
-
-This repository is configured to deploy through GitHub Actions.
-
-Expected live URL:
-
-```text
-https://CreativeHouse101.github.io/Portfolio/
-```
-
-If this is the first deployment, open the GitHub repository, go to **Settings -> Pages**, and set **Source** to **GitHub Actions**. After that, every push to `main` deploys the site automatically.
-
-## Notes
-
-The homepage is designed as a self-contained portfolio with local assets, CSS interface mockups, anchor navigation, and no external image dependencies.
+https://creativehouse101.github.io/Portfolio/

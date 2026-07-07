@@ -3,9 +3,9 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Pyae Zaw | IDEA House Portfolio",
+  title: "IDEA HOUSE | Content & Brand Studio",
   description:
-    "Minimal portfolio and resume website for Pyae Zaw, founder of IDEA House Content and Brand Studio."
+    "IDEA HOUSE helps businesses grow through brand clarity, strategic content, visual design, and monthly content planning."
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
