@@ -147,44 +147,58 @@ export type SelectedWork = {
 
 export const selectedWork: SelectedWork[] = [
   {
-    label: "Brand Foundation",
-    title: "Starter Brand Kit",
-    description: "A clear beginning system for logo direction, brand voice, outline, persona, and 15 monthly posts.",
-    image: "/assets/idea-house-starter-kit.jpg",
-    imageAlt: "IDEA HOUSE starter brand kit graphic",
-    tags: ["Logo Direction", "Brand Voice", "Starter Kit"]
-  },
-  {
-    label: "Social Content System",
-    title: "Business Momentum",
-    description: "A monthly content system designed to build consistency, clarity, and visible brand growth.",
-    image: "/assets/idea-house-business-momentum.jpg",
-    imageAlt: "IDEA HOUSE business momentum graphic",
-    tags: ["30 Posts", "Content Calendar", "Momentum"]
+    label: "Process Education",
+    title: "Our Brand-Building Process",
+    description:
+      "Explains the IDEA HOUSE workflow: discover the business, strategize the message, create connected content, and show up consistently with purpose.",
+    image: "/assets/idea-house-process.jpg",
+    imageAlt: "IDEA HOUSE process graphic showing discover, strategize, create, and consistently show up",
+    tags: ["Discover", "Strategy", "Consistency"]
   },
   {
     label: "Content Planning",
-    title: "Choose Your Plan",
-    description: "A clean pricing and planning structure built for different stages of brand growth.",
-    image: "/assets/idea-house-choose-your-plan.jpg",
-    imageAlt: "IDEA HOUSE choose your plan pricing graphic",
-    tags: ["Starter", "Business", "Early Bird"]
+    title: "Random Content, Random Result",
+    description:
+      "Shows why planning matters: without a content calendar and clear direction, every post stands alone and the brand loses momentum.",
+    image: "/assets/idea-house-random-content.jpg",
+    imageAlt: "IDEA HOUSE random content random result graphic with calendar visual",
+    tags: ["Planning", "Calendar", "Direction"]
   },
   {
-    label: "Creative Direction",
-    title: "Ideas Into Impact",
-    description: "A refined brand introduction system for presenting IDEA HOUSE with clarity and confidence.",
-    image: "/assets/idea-house-welcome.jpg",
-    imageAlt: "IDEA HOUSE welcome graphic",
-    tags: ["Brand Message", "Visual Direction", "Positioning"]
+    label: "Brand Perspective",
+    title: "Consistency Builds Brand",
+    description:
+      "Frames the difference between one good post and a real brand system: consistent content builds recognition, trust, and long-term results.",
+    image: "/assets/idea-house-consistency-result.jpg",
+    imageAlt: "IDEA HOUSE consistency result perspective graphic",
+    tags: ["Consistency", "Trust", "Brand Growth"]
   },
   {
-    label: "Visual Branding",
-    title: "Content & Brand Studio Identity",
-    description: "A minimal studio identity system built around text, graphics, planning, and purposeful growth.",
-    image: "/assets/idea-house-logo.png",
-    imageAlt: "IDEA HOUSE Content and Brand Studio logo",
-    tags: ["Identity", "Studio", "Brand Clarity"]
+    label: "Brand Strategy",
+    title: "Posting vs Branding",
+    description:
+      "Clarifies that posting is only an activity, while branding is a strategy built from clear messages, consistent voice, memorable visuals, and planned rhythm.",
+    image: "/assets/idea-house-posting-branding.jpg",
+    imageAlt: "IDEA HOUSE posting versus branding graphic",
+    tags: ["Clear Message", "Voice", "Rhythm"]
+  },
+  {
+    label: "Brand Voice",
+    title: "Why Brand Voice Matters",
+    description:
+      "Explains the value of a defined business voice: the brand sounds consistent, becomes easier to remember, builds trust, and stands out.",
+    image: "/assets/idea-house-brand-voice.jpg",
+    imageAlt: "IDEA HOUSE brand voice graphic",
+    tags: ["Voice", "Memory", "Trust"]
+  },
+  {
+    label: "Studio Services",
+    title: "What IDEA HOUSE Does",
+    description:
+      "Summarizes the studio offer in one clear visual: text for voice and copy, graphics for professional visuals, and planning for strategy and calendars.",
+    image: "/assets/idea-house-what-we-do.jpg",
+    imageAlt: "IDEA HOUSE what we do graphic for text graphic and planning",
+    tags: ["Text", "Graphic", "Planning"]
   }
 ];
 
