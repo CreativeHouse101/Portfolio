@@ -15,7 +15,7 @@ export const brand = {
   name: "IDEA HOUSE",
   descriptor: "Content & Brand Studio",
   tagline: "Ideas Into Impact.",
-  serviceLine: "Text • Graphic • Planning",
+  serviceLine: "Text / Graphic / Planning",
   email: "creativehouse10x@gmail.com",
   phone: "09983993588",
   location: "Mandalay, Myanmar",
