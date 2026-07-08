@@ -13,6 +13,7 @@ This project is organized so each kind of edit has a clear place.
 - `hooks/` contains client-side behavior for the contact form and light/dark theme.
 - `lib/` contains small shared helpers.
 - `public/assets/` contains the image files used by the site.
+- `_next/`, `assets/`, `404/`, `index.html`, and `index.txt` are generated deployment output for the current GitHub Pages branch setup.
 
 ## Common Edits
 
@@ -25,4 +26,6 @@ This project is organized so each kind of edit has a clear place.
 
 ## Deployment
 
-GitHub Actions builds the static site from source and deploys the generated `out/` folder. Do not edit generated build output by hand.
+GitHub Actions builds the static site from source. The current GitHub Pages branch setup also needs the generated root export files committed.
+
+Do not edit generated build output by hand. Run a production build, then refresh the root output from `out/`.

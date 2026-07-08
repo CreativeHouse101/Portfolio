@@ -38,6 +38,9 @@ NEXT_PUBLIC_BASE_PATH=/Portfolio pnpm run build
 
 GitHub Actions builds and deploys the `out/` folder automatically on every push to `main`.
 
+The current GitHub Pages setup also serves the generated root export files (`index.html`, `_next/`, `assets/`, and `404/`).
+Do not edit those files by hand; refresh them from `out/` after a production build.
+
 The live GitHub Pages URL is:
 
 https://creativehouse101.github.io/Portfolio/

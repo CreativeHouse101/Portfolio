@@ -1,12 +1,6 @@
 .next/
 node_modules/
 out/
-/_next/
-/assets/
-/404/
-/404.html
-/index.html
-/index.txt
 dist/
 coverage/
 *.log
